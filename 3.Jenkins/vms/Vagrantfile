@@ -1,0 +1,34 @@
+Vagrant.configure("2") do |cfg|
+  cfg.vm.define "master" do |master|
+    master.vm.box = "bento/ubuntu-18.04"
+    master.vm.hostname = "master-jenkins" 
+    master.vm.network "private_network", ip: "192.168.56.13"
+    master.vm.provider "virtualbox" do |mvb|
+      mvb.name = "master-jenkins"
+      mvb.memory = 1024
+      mvb.cpus = 1
+    end
+  end
+
+  cfg.vm.define "staging" do |staging|
+    staging.vm.box = "kwilczynski/ubuntu-20.04-docker"
+    staging.vm.hostname = "staging" 
+    staging.vm.network "private_network", ip: "192.168.56.14"
+    staging.vm.provider "virtualbox" do |svb|
+      svb.name = "staging"
+      svb.memory = 1024
+      svb.cpus = 1
+    end
+  end
+
+  cfg.vm.define "prod" do |prod|
+    prod.vm.box = "kwilczynski/ubuntu-20.04-docker"
+    prod.vm.hostname = "prod" 
+    prod.vm.network "private_network", ip: "192.168.56.15"
+    prod.vm.provider "virtualbox" do |pvb|
+      pvb.name = "prod"
+      pvb.memory = 1024
+      pvb.cpus = 1
+    end
+  end
+end
