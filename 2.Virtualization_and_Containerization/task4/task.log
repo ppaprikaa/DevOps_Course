@@ -1,0 +1,10 @@
+1:
+   label: 
+      build docker image specified in dockerfile
+   command: 
+      $ docker buildx build -t go-webapp:1.0 .
+2:
+   label: 
+      run docker application
+   command: 
+      $ docker run --rm --detach -p 4000:4000 go-webapp:1.0

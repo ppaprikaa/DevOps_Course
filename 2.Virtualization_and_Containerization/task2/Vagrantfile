@@ -1,0 +1,37 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  config.vm.define "ubuntu-slave" do |ubuntu|
+    ubuntu.vm.box = "ubuntu/trusty64"
+    ubuntu.vm.hostname = "ubuntu-slave-1"
+    ubuntu.vm.network "private_network", ip: "192.168.56.10"
+    ubuntu.vm.provider "virtualbox" do |ubuntuvb|
+      ubuntuvb.name = "ubuntu-slave-1"
+      ubuntuvb.memory = 2048
+      ubuntuvb.cpus = 2
+    end
+  end
+
+  config.vm.define "centos-slave" do |centos|
+    centos.vm.box = "centos/7"
+    centos.vm.hostname = "centos-slave-1"
+    centos.vm.network "private_network", ip: "192.168.56.20"
+    centos.vm.provider "virtualbox" do |centvb|
+      centvb.name = "centos-slave-1"
+      centvb.memory = 1024
+      centvb.cpus = 1
+    end
+  end
+
+  config.vm.define "debian-slave" do |debian|
+    debian.vm.box = "debian/buster64"
+    debian.vm.hostname = "debian-slave-1"
+    debian.vm.network "private_network", ip: "192.168.56.30"
+    debian.vm.provider "virtualbox" do |debvb|
+      debvb.name = "debian-slave-1"
+      debvb.memory = 1024
+      debvb.cpus = 2
+    end
+  end
+end

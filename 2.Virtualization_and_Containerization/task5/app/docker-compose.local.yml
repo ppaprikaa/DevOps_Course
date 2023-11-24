@@ -1,0 +1,16 @@
+version: "3.9"
+services:
+  storage:
+    image: postgres:13.3
+    restart: always
+    environment:
+      POSTGRES_DB: "wheels"
+      POSTGRES_USER: "wheels"
+      POSTGRES_PASSWORD: "wheels"
+    ports:
+      - "5432:5432"
+    volumes:
+      - storage:/docker-entrypoint-initdb.d
+
+volumes:
+  storage:
