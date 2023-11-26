@@ -1,0 +1,34 @@
+Vagrant.configure("2") do |config|
+  config.vm.define "ab-haproxy" do |prx|
+    prx.vm.box = "bento/ubuntu-18.04"
+    prx.vm.hostname = "ab-haproxy-1"
+    prx.vm.network "private_network", ip: "192.168.56.10"
+    prx.vm.provider "virtualbox" do |prxvb|
+      prxvb.name = "ab-haproxy-1"
+      prxvb.memory = 1024
+      prxvb.cpus = 1
+    end
+  end
+
+  config.vm.define "ab-logstash" do |log|
+    log.vm.box = "bento/ubuntu-18.04"
+    log.vm.hostname = "ab-logstash-1"
+    log.vm.network "private_network", ip: "192.168.56.11"
+    log.vm.provider "virtualbox" do |logvb|
+      logvb.name = "ab-logstash-1"
+      logvb.memory = 2048
+      logvb.cpus = 2
+    end
+  end
+
+  config.vm.define "ab-webui" do |ui|
+    ui.vm.box = "bento/ubuntu-18.04"
+    ui.vm.hostname = "ab-webui-1"
+    ui.vm.network "private_network", ip: "192.168.56.12"
+    ui.vm.provider "virtualbox" do |uivb|
+      uivb.name = "ab-webui-1"
+      uivb.memory = 1024
+      uivb.cpus = 1
+    end
+  end
+end

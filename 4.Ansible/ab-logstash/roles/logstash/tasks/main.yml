@@ -1,0 +1,21 @@
+---
+- name: Debug
+  ansible.builtin.debug:
+    msg: Host {{ inventory_hostname }}.
+
+- name: Pass logstash config
+  ansible.builtin.template:
+    src: rsyslog.conf.j2
+    dest: "{{ logstash_confd }}/rsyslog.conf"
+
+- name: Enable logstash service
+  ansible.builtin.systemd:
+    name: logstash
+    enabled: true
+    masked: no
+
+- name: Start logstash service
+  ansible.builtin.systemd:
+    name: logstash
+    state: restarted
+    daemon_reload: true

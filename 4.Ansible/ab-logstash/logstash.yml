@@ -1,0 +1,12 @@
+---
+
+- name: AB-Logstash
+  hosts: logstash
+  become: yes
+  roles:
+    - init
+    - apt
+    - ntp
+    - monit
+    - elasticsearch
+    - logstash

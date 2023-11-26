@@ -1,0 +1,10 @@
+---
+- name: Roles
+  hosts: logstash
+  roles:
+    - init
+    - apt
+    - ntp
+    - monit
+    - elasticsearch
+    - logstash

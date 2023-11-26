@@ -1,0 +1,21 @@
+---
+- name: Debug
+  ansible.builtin.debug:
+    msg: Host {{ inventory_hostname }}.
+
+- name: Pass kibana config
+  ansible.builtin.template:
+    src: kibana.yml.j2
+    dest: "{{ kibana_conf }}"
+
+- name: Enable kibana service
+  ansible.builtin.systemd:
+    name: kibana
+    enabled: true
+    masked: no
+
+- name: Start kibana service
+  ansible.builtin.systemd:
+    name: kibana
+    state: restarted
+    daemon_reload: true

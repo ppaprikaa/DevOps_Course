@@ -1,0 +1,26 @@
+---
+- name: Debug
+  ansible.builtin.debug:
+    msg: Host {{ inventory_hostname }}.
+
+- name: Create haproxy dir
+  ansible.builtin.file:
+    path: "/home/{{ ansible_user }}/haproxy"
+    state: "directory"
+
+- name: Pass HAProxy runner
+  ansible.builtin.template:
+    src: haproxy.runner.sh.j2
+    dest: "/home/{{ ansible_user }}/haproxy/haproxy.sh"
+
+
+- name: Set HAProxy runner permissions
+  ansible.builtin.file:
+    path: "/home/{{ ansible_user }}/haproxy/haproxy.sh"
+    mode: "+x"
+
+- name: Pass configuration file
+  ansible.builtin.template:
+    src: haproxy.cfg.j2
+    dest: "/home/{{ ansible_user }}/haproxy/haproxy.cfg"
+

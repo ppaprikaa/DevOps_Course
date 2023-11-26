@@ -1,0 +1,11 @@
+---
+- name: Roles
+  hosts: webui
+  roles:
+    - init
+    - apt
+    - ntp
+    - monit
+    - rsyslog
+    - kibana
+    - nginx

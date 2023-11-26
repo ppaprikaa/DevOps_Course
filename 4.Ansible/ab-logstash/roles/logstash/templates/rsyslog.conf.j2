@@ -1,0 +1,17 @@
+input {
+        {{ logstash_protocol }} {
+                type => "rsyslog"
+                port => {{ logstash_port }}
+                host => "{{ logstash_host }}"
+                codec => "json"
+        }
+}
+
+output {
+        if [type] == "rsyslog" {
+                elasticsearch {
+                        hosts => ["{{ elasticsearch_host }}:{{ elasticsearch_port }}"]
+                }
+        }
+}
+

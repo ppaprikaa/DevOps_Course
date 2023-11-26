@@ -1,0 +1,12 @@
+---
+- name: AB-WebUI
+  hosts: webui
+  become: yes
+  roles:
+    - init
+    - apt
+    - ntp
+    - monit
+    - rsyslog
+    - kibana
+    - nginx

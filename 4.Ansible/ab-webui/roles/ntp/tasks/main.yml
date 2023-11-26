@@ -1,0 +1,12 @@
+---
+- name: Debug host
+  ansible.builtin.debug:
+    msg: Host {{ inventory_hostname }}.
+
+- name: Pass NTP sync shell script into the server
+  ansible.builtin.copy:
+    src: syncwntp.sh
+    dest: /etc/cron.daily/syncwntp.sh
+    owner: root
+    group: root
+    mode: "a+x"

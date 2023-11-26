@@ -1,0 +1,8 @@
+---
+- name: check if lock file exists
+  stat:
+    path: "{{ init_lockfile_path }}/{{ init_lockfile }}"
+  register: file_status
+
+- include_tasks: tasks.yml
+  when: not file_status.stat.exists
