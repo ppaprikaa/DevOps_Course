@@ -1,6 +1,0 @@
-server {
-        listen {{ nginx_port }};
-        location / {
-                proxy_pass http://{{ kibana_host }}:{{ kibana_port }};
-        }
-}

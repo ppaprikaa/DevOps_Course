@@ -1,9 +1,0 @@
-#=============================================================
-frontend webui-front
-        bind *:{{ front_port }}
-        default_backend webui-back
-
-backend webui-back
-        server ui1 {{ webui_host }}:{{ webui_port }}
-
-#=============================================================

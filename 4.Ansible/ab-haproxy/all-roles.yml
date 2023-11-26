@@ -1,9 +1,0 @@
----
-
-- name: Roles
-  hosts: haproxy
-  roles:
-    - apt
-    - ntp
-    - monit
-    - haproxy
