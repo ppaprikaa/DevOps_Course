@@ -11,6 +11,18 @@
 
 * rsyslog(webUI) => logstash(logstash) => elasticsearch(logstash) => kibana(webUI) => nginx(webUI) => haproxy(haproxy)
 
-И всё это настроить через Ansible
+И всё это настроить через Ansible.
 
-и так по ролям, ab-haproxy содержит в себе следующие роли: `apt, ntp, monit, haproxy`, ab-logstash: `init, apt, ntp, monit, logstash, elasticsearch`, ab-webui: `init, apt, ntp, monit, rsyslog, kibana, nginx`
+## Роли: 
+ab-haproxy содержит в себе следующие роли: `apt, ntp, monit, haproxy`, 
+
+ab-logstash: `init, apt, ntp, monit, logstash, elasticsearch`, 
+
+ab-webui: `init, apt, ntp, monit, rsyslog, kibana, nginx`
+
+## Репозитории
+ab-haproxy: https://github.com/ppaprikaa/ab-haproxy.git
+
+ab-logstash: https://github.com/ppaprikaa/ab-logstash.git
+
+ab-webui: https://github.com/ppaprikaa/ab-webui.git
